@@ -45,13 +45,25 @@ class Person(public var name: String, private var age: Int) {
 }
 
 open class Animal(val name: String, var age: Int, var type: String) {
-    open fun sound() {}
+    open fun sound() {
+        println("Животное $name звуки")
+    }
+
+    open fun doSmt() {
+        println("fasf")
+    }
+
+    open fun eat(): Boolean {
+        return true
+    }
 }
 
 class Dog(name: String, age: Int, type: String) : Animal(name, age, type) {
     override fun sound() {
         println("Гав-гав")
+        doSmt()
     }
+
 }
 
 class Cat(name: String, age: Int, type: String) : Animal(name, age, type) {
@@ -63,6 +75,13 @@ class Cat(name: String, age: Int, type: String) : Animal(name, age, type) {
 class Bober(name: String, age: Int, type: String) : Animal(name, age, type) {
     override fun sound() {
         println("Издает звуки")
+    }
+}
+
+class Rat(name: String, age: Int, type: String) : Animal(name, age, type) {
+    override fun sound() {
+        // super — позволяет использовать код родительского класса
+        super.sound()
     }
 }
 
@@ -101,10 +120,14 @@ fun main() {
     val cat = Cat("Гав", 22, "Кот")
     val dog = Dog("Рыжик", 40, "Собак")
     val bober = Bober("Vadim", 20, "Bober")
+    val rat = Rat(name = "Rat", age = 29, "Rat")
+    val animal = Animal("Animal", 20, "Animal")
 
     cat.sound()
     dog.sound()
     bober.sound()
+    rat.sound()
+    animal.sound()
 }
 
 
